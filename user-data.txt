@@ -1,0 +1,28 @@
+#cloud-config
+users:
+  - name: appuser
+    shell: /bin/bash
+
+package_upgrade: true
+
+runcmd:
+  - apt update
+  - apt install apt-transport-https ca-certificates curl software-properties-common
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+  - apt update
+  - apt-cache policy docker-ce
+  - apt install -y docker-ce
+  - usermod -aG docker appuser
+  - mkdir -p /opt/
+  - git clone https://github.com/edigonzales/hetzner-docker-jenkins-artifactory.git /opt/hetzner-docker-jenkins-artifactory
+  - chown -R appuser /opt/hetzner-docker-jenkins-artifactory
+  - sudo -u appuser docker-compose -f /opt/hetzner-docker-jenkins-artifactory/modules/docker-compose.yml build
+
+
+power_state:
+  delay: "now"
+  mode: reboot
+  message: First reboot
+  condition: True
+

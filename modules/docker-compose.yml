@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+    reverseproxy:
+        image: my_reverseproxy
+        build:
+            context: ./reverseproxy
+            dockerfile: Dockerfile
+        container_name: my_reverseproxy
+        ports:
+            - 80:80
+        restart: always
+
+    jenkins:
+        depends_on:
+            - reverseproxy
+        image: jenkinsci/blueocean:1.8.4
+        ports:
+            - 8080:8080 
+            - 50000:50000
+        volumes:
+            - /var/jenkins_home:/var/jenkins_home
+            - /var/run/docker.sock:/var/run/docker.sock
+        environment:
+            - JENKINS_OPTS="--prefix=/jenkins"
+        restart: always

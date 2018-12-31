@@ -16,8 +16,8 @@ runcmd:
   - curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
   - chmod +x /usr/local/bin/docker-compose
   - usermod -aG docker jenkins
-  - mkdir -p /var/jenkins_home
-  - chown -R jenkins:jenkins /var/jenkins_home
+  - mkdir -p /opt/jenkins_home
+  - chown -R jenkins:jenkins /opt/jenkins_home
   - git clone https://github.com/edigonzales/hetzner-docker-jenkins-artifactory.git /home/jenkins/hetzner-docker-jenkins-artifactory
   - chown -R jenkins:jenkins /home/jenkins/hetzner-docker-jenkins-artifactory
   - sudo -u jenkins docker-compose -f /home/jenkins/hetzner-docker-jenkins-artifactory/modules/docker-compose.yml build

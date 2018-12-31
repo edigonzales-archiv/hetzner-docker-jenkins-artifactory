@@ -16,15 +16,11 @@ services:
             - reverseproxy
         image: jenkinsci/blueocean:1.8.4
         user: root
-        #build:
-        #    context: ./jenkins
-        #    dockerfile: Dockerfile
         ports:
             - 8080:8080 
             - 50000:50000
         volumes:
-            #- /var/jenkins_home:/var/jenkins_home
-            - /Users/stefan/tmp/jenkins_home:/var/jenkins_home
+            - /opt/jenkins_home:/var/jenkins_home
             - /var/run/docker.sock:/var/run/docker.sock
         environment:
             - JENKINS_OPTS="--prefix=/jenkins"

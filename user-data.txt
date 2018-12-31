@@ -1,6 +1,6 @@
 #cloud-config
 users:
-  - name: appuser
+  - name: jenkins
     shell: /bin/bash
 
 package_upgrade: true
@@ -15,13 +15,13 @@ runcmd:
   - apt install -y docker-ce
   - curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
   - chmod +x /usr/local/bin/docker-compose
-  - usermod -aG docker appuser
+  - usermod -aG docker jenkins
   - mkdir -p /var/jenkins_home
-  - chown -R appuser:appuser /var/jenkins_home
-  - git clone https://github.com/edigonzales/hetzner-docker-jenkins-artifactory.git /home/appuser/hetzner-docker-jenkins-artifactory
-  - chown -R appuser:appuser /home/appuser/hetzner-docker-jenkins-artifactory
-  - sudo -u appuser docker-compose -f /home/appuser/hetzner-docker-jenkins-artifactory/modules/docker-compose.yml build
-  - sudo -u appuser docker-compose -f /home/appuser/hetzner-docker-jenkins-artifactory/modules/docker-compose.yml up
+  - chown -R jenkins:jenkins /var/jenkins_home
+  - git clone https://github.com/edigonzales/hetzner-docker-jenkins-artifactory.git /home/jenkins/hetzner-docker-jenkins-artifactory
+  - chown -R jenkins:jenkins /home/jenkins/hetzner-docker-jenkins-artifactory
+  - sudo -u jenkins docker-compose -f /home/jenkins/hetzner-docker-jenkins-artifactory/modules/docker-compose.yml build
+  - sudo -u jenkins docker-compose -f /home/jenkins/hetzner-docker-jenkins-artifactory/modules/docker-compose.yml up
 
 power_state:
   delay: "now"

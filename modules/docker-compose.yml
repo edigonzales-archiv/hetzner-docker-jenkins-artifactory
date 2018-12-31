@@ -15,17 +15,17 @@ services:
         depends_on:
             - reverseproxy
         image: jenkinsci/blueocean:1.8.4
-        user: 1000:1000
-        group_add:
-            - docker
+        user: root
+        #build:
+        #    context: ./jenkins
+        #    dockerfile: Dockerfile
         ports:
             - 8080:8080 
             - 50000:50000
         volumes:
-            - /var/jenkins_home:/var/jenkins_home
+            #- /var/jenkins_home:/var/jenkins_home
+            - /Users/stefan/tmp/jenkins_home:/var/jenkins_home
             - /var/run/docker.sock:/var/run/docker.sock
         environment:
- #           - UID_JENKINS=1000
- #           - GID_JENKINS=1000
             - JENKINS_OPTS="--prefix=/jenkins"
         restart: always

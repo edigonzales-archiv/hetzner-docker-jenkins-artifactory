@@ -8,6 +8,7 @@ services:
             - 80:80
             - 443:443
         volumes:
+            - /home/appuser/certs:/etc/nginx/certs
             - /var/run/docker.sock:/tmp/docker.sock:ro
         restart: always
 
@@ -21,6 +22,6 @@ services:
             - /opt/jenkins_home:/var/jenkins_home
             - /var/run/docker.sock:/var/run/docker.sock
         environment:
-            - VIRTUAL_HOST=jenkins.localhost 
+            - VIRTUAL_HOST=jenkins.sogeo.services
             - VIRTUAL_PORT=8080
         restart: always

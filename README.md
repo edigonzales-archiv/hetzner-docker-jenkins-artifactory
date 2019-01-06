@@ -11,6 +11,6 @@ docker run -d --rm -p 80:80 -p 443:443 -v /var/run/docker.sock:/tmp/docker.sock:
 1. Server mit user-data.txt aufsetzen
 2. Floating-IP setzen (in GUI und auf Server)
 3. `/etc/resolv.conf` ggf. anpassen -> `8.8.8.8`
-4. 
+4. certbot certonly: (2) wählen
 /etc/resolv.conf anpassen.
 nginx -s stop

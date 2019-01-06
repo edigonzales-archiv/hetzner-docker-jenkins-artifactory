@@ -24,8 +24,21 @@ iface eth0 inet6 static
         netmask 64
         gateway fe80::1
 ```
-
 Die bestehende IPv6 (aus  `/etc/network/interfaces.d/50-cloud-init.cfg`) verwenden.
+
+Editieren von /etc/netplan/01-netcfg.yml
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: yes
+      dhcp6: no
+      addresses:
+        - <one IPv6 address from your subnet, e.g. 2001:db8:0::1>/64
+      gateway6: fe80::1
+```
 
 Hinzufügen von /etc/cloud/cloud.cfg.d/98-disable-network.cfg:
 

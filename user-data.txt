@@ -1,0 +1,33 @@
+#cloud-config
+users:
+  - name: appuser
+    shell: /bin/bash
+
+package_upgrade: true
+
+runcmd:
+  - apt update
+  - apt install apt-transport-https ca-certificates curl software-properties-common
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+  - apt update
+  - apt-cache policy docker-ce
+  - apt install -y docker-ce
+  - curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  - chmod +x /usr/local/bin/docker-compose
+  - usermod -aG docker appuser
+  - add-apt-repository -y ppa:certbot/certbot
+  - apt install -y python-certbot-nginx
+  - mkdir -p /opt/jenkins_home
+  - chown -R appuser:appuser /opt/jenkins_home
+  #- git clone https://github.com/edigonzales/hetzner-docker-jenkins-artifactory.git /home/jenkins/hetzner-docker-jenkins-artifactory
+  #- chown -R jenkins:jenkins /home/jenkins/hetzner-docker-jenkins-artifactory
+  #- sudo -u jenkins docker-compose -f /home/jenkins/hetzner-docker-jenkins-artifactory/modules/docker-compose.yml build
+  #- sudo -u jenkins docker-compose -f /home/jenkins/hetzner-docker-jenkins-artifactory/modules/docker-compose.yml up
+
+power_state:
+  delay: "now"
+  mode: reboot
+  message: First reboot
+  condition: True
+

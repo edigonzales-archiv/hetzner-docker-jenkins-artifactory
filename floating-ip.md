@@ -1,7 +1,7 @@
 ## Temporär (bis zum nächsten Reboot):
 
 ```
-sudo ip addr add 195.201.45.245 dev eth0
+sudo ip addr add 116.203.3.155 dev eth0
 ```
 
 ## Dauherhaft
@@ -12,7 +12,7 @@ Editieren von /etc/network/interfaces:
 ```
 auto eth0
 iface eth0 inet static
-        address 195.201.45.245
+        address 116.203.3.155
         netmask 255.255.255.255
         pointopoint 172.31.1.1 dev eth0
         gateway 172.31.1.1

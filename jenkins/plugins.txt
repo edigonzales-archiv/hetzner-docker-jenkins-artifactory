@@ -15,6 +15,7 @@ git-server:latest
 ant:latest
 blueocean:latest
 junit:latest
+role-strategy:latest
 build-timeout:latest
 cloudbees-bitbucket-branch-source:latest
 mailer:latest

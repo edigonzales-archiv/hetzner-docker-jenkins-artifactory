@@ -15,7 +15,10 @@ services:
     jenkins:
         depends_on:
             - reverseproxy
-        image: jenkinsci/blueocean:1.10.1
+        image: my_jenkins
+        build:
+            context: ./jenkins
+            dockerfile: Dockerfile
         container_name: my_jenkins
         user: root
         volumes:

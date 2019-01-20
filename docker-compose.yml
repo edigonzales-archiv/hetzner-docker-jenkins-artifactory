@@ -34,6 +34,8 @@ services:
             - reverseproxy
         image: sogis/pdf4oereb-web-service:latest
         container_name: my_pdf4oereb
+        expose:
+            - "8888"
         environment:
             - VIRTUAL_HOST=pdf4oereb.sogeo.services
             - VIRTUAL_PORT=8888

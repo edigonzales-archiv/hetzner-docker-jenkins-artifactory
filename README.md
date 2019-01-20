@@ -25,6 +25,8 @@ plugins.each {println "${it.getShortName()}: ${it.getVersion()}"}
 ```
 
 ```
-docker-compose build sogis/pdf4oereb-web-service
-docker-compose up --no-deps -d sogis/pdf4oereb-web-service
+docker-compose build pdf4oereb
+docker-compose up --no-deps -d pdf4oereb
 ```
+
+cp /etc/letsencrypt/live/pdf4oereb.sogeo.services/fullchain.pem /home/appuser/certs/pdf4oereb.sogeo.services.crt

@@ -28,3 +28,14 @@ services:
             - VIRTUAL_HOST=jenkins.sogeo.services
             - VIRTUAL_PORT=8080
         restart: always
+
+    pdf4oereb:
+        depends_on:
+            - reverseproxy
+        image: sogis/pdf4oereb-web-service:latest
+        container_name: my_pdf4oereb
+        environment:
+            - VIRTUAL_HOST=pdf4oereb.sogeo.services
+            - VIRTUAL_PORT=8887
+            - SERVER_SERVLET_CONTEXT_PATH=/
+        restart: always

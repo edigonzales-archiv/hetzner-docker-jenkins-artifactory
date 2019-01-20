@@ -23,3 +23,8 @@ List with all plugins:
 def plugins = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
 plugins.each {println "${it.getShortName()}: ${it.getVersion()}"}
 ```
+
+```
+docker-compose build sogis/pdf4oereb-web-service
+docker-compose up --no-deps -d sogis/pdf4oereb-web-service
+```

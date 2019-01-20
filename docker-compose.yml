@@ -36,6 +36,6 @@ services:
         container_name: my_pdf4oereb
         environment:
             - VIRTUAL_HOST=pdf4oereb.sogeo.services
-            - VIRTUAL_PORT=8887
+            - VIRTUAL_PORT=8888
             - SERVER_SERVLET_CONTEXT_PATH=/
         restart: always

@@ -30,3 +30,9 @@ docker-compose up --no-deps -d pdf4oereb
 ```
 
 cp /etc/letsencrypt/live/pdf4oereb.sogeo.services/fullchain.pem /home/appuser/certs/pdf4oereb.sogeo.services.crt
+cp /etc/letsencrypt/live/pdf4oereb.sogeo.services/privkey.pem  /home/appuser/certs/pdf4oereb.sogeo.services.key`
+chown appuser:appuser pdf4oereb.sogeo.services.*
+
+cp /etc/letsencrypt/live/artifactory.sogeo.services/fullchain.pem /home/appuser/certs/artifactory.sogeo.services.crt
+cp /etc/letsencrypt/live/artifactory.sogeo.services/privkey.pem  /home/appuser/certs/artifactory.sogeo.services.key
+chown appuser:appuser artifactory.sogeo.services.*

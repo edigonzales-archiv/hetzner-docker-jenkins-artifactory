@@ -41,3 +41,15 @@ services:
             - VIRTUAL_PORT=8888
             - SERVER_SERVLET_CONTEXT_PATH=/
         restart: always
+
+    pdf4oereb:
+        depends_on:
+            - reverseproxy
+        image: docker.bintray.io/jfrog/artifactory-oss:6.6.5
+        container_name: my_artifactory
+        expose:
+            - "8081"
+        environment:
+            - VIRTUAL_HOST=artifactory.sogeo.services
+            - VIRTUAL_PORT=8081
+        restart: always

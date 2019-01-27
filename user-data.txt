@@ -20,6 +20,8 @@ runcmd:
   - apt install -y python-certbot-nginx
   - mkdir -p /opt/jenkins_home
   - chown -R appuser:appuser /opt/jenkins_home
+  - mkdir -p /opt/artifactory
+  - chown -R appuser:appuser /opt/artifactory
   - mkdir -p /home/appuser/certs
   - chown -R appuser:appuser /home/appuser/certs
   #- git clone https://github.com/edigonzales/hetzner-docker-jenkins-artifactory.git /home/appuser/hetzner-docker-jenkins-artifactory
